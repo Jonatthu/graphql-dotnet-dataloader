@@ -105,7 +105,7 @@ Field<ListGraphType<CharacterInterface>>()
                 .Where(f => ids.Contains(f.HumanId))
                 .Select(f => new {Key = f.HumanId, f.Droid})
                 .ToLookup(f => f.Key, f => f.Droid);
-    }));
+    }).LoadAsync(ctx.Source.HumanId));
 
 // Example 3 - field builder BatchResolve extension method
 //   Creates a 
